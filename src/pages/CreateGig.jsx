@@ -40,7 +40,7 @@ const CreateGig = () => {
   const handleSetRole = async () => {
     try {
       const res = await axios.put(
-        'http://localhost:5000/api/auth/set-role',
+        'https://workwithtrust-backend.onrender.com/api/auth/set-role',
         { role: 'freelancer' },
         {
           headers: {
@@ -150,7 +150,7 @@ const CreateGig = () => {
 
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/gigs',
+        'https://workwithtrust-backend.onrender.com/api/gigs',
         formData,
         {
           headers: {

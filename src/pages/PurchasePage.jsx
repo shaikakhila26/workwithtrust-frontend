@@ -18,7 +18,7 @@ const PurchasePage = () => {
   useEffect(() => {
     const fetchGig = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/gigs/${gigId}`);
+        const res = await axios.get(`https://workwithtrust-backend.onrender.com/api/gigs/${gigId}`);
         setGig(res.data);
       } catch (err) {
         console.error('Failed to fetch gig:', err);
@@ -54,7 +54,7 @@ const PurchasePage = () => {
     try {
       setLoading(true);
       const res = await axios.post(
-        `http://localhost:5000/api/stripe/create-checkout-session`,
+        `https://workwithtrust-backend.onrender.com/api/stripe/create-checkout-session`,
         { gigId: gig._id || gigId },
         {
           headers: {

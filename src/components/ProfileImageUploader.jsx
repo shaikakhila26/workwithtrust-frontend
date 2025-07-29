@@ -33,7 +33,7 @@ const ProfileImageUploader = ({ user, setUser }) => {
     try {
       setLoading(true);
       const token = localStorage.getItem('token');
-      const res = await axios.post('http://localhost:5000/api/users/upload-profile-image', formData, {
+      const res = await axios.post('https://workwithtrust-backend.onrender.com/api/users/upload-profile-image', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
           Authorization: `Bearer ${token}`,

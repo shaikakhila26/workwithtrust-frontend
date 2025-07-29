@@ -15,7 +15,7 @@ const GigDetail = () => {
   useEffect(() => {
     const fetchGig = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/gigs/${gigId}`);
+        const res = await axios.get(`https://workwithtrust-backend.onrender.com/api/gigs/${gigId}`);
         console.log("Gig object:", res.data);
         
 
@@ -29,7 +29,7 @@ const GigDetail = () => {
     };
     const fetchReviews = async () => {
       try {
-        const res = await axios.get(`http://localhost:5000/api/reviews/${gigId}`);
+        const res = await axios.get(`https://workwithtrust-backend.onrender.com/api/reviews/${gigId}`);
         setReviews(res.data);
       } catch (err) {
         console.error(err);
@@ -91,7 +91,7 @@ const GigDetail = () => {
           <img
             src={
     gig.freelancer.profilePic
-      ? `http://localhost:5000/uploads/${gig.freelancer.profilePic}`
+      ? `https://workwithtrust-backend.onrender.com/uploads/${gig.freelancer.profilePic}`
       : '/default-avatar.jpg'
   }
             alt="Freelancer"

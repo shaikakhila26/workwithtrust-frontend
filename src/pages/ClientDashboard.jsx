@@ -30,7 +30,7 @@ const ClientDashboard = () => {
 
 
       
-      const res = await axios.get('http://localhost:5000/api/orders/my-orders', {
+      const res = await axios.get('https://workwithtrust-backend.onrender.com/api/orders/my-orders', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setOrders(res.data);

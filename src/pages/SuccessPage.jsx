@@ -51,7 +51,7 @@ const SuccessPage = () => {
       try {
         console.log('🔍 Sending POST to /api/orders', { gigId, sessionId, token });
         const res = await axios.post(
-          `http://localhost:5000/api/orders`,
+          `https://workwithtrust-backend.onrender.com/api/orders`,
           { gigId, sessionId },
           { headers: { Authorization: `Bearer ${token}` } }
         );

@@ -52,7 +52,7 @@ const EditGig = () => {
     const fetchGig = async () => {
       try {
         console.log('📤 Fetching gig ID:', id);
-        const res = await axios.get(`http://localhost:5000/api/gigs/${id}`, {
+        const res = await axios.get(`https://workwithtrust-backend.onrender.com/api/gigs/${id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -205,7 +205,7 @@ const EditGig = () => {
 
     try {
       const res = await axios.put(
-        `http://localhost:5000/api/gigs/${id}`,
+        `https://workwithtrust-backend.onrender.com/api/gigs/${id}`,
         payload,
         {
           headers: {

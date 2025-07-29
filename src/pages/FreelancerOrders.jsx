@@ -28,7 +28,7 @@ const FreelancerOrders = () => {
     const fetchOrders = async () => {
       try {
         console.log('📤 Fetching freelancer orders for user:', user._id);
-        const res = await axios.get('http://localhost:5000/api/orders/freelancer', {
+        const res = await axios.get('https://workwithtrust-backend.onrender.com/api/orders/freelancer', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -56,7 +56,7 @@ const FreelancerOrders = () => {
     try {
       console.log('📤 Updating order status:', { orderId, newStatus });
       const res = await axios.put(
-        `http://localhost:5000/api/orders/freelancer/${orderId}`,
+        `https://workwithtrust-backend.onrender.com/api/orders/freelancer/${orderId}`,
         { status: newStatus },
         {
           headers: {

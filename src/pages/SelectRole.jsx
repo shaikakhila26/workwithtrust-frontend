@@ -34,7 +34,7 @@ const SelectRole = () => {
     try {
       console.log('📤 Setting role:', role, 'for userId:', userId);
       const res = await axios.put(
-        'http://localhost:5000/api/auth/set-role',
+        'https://workwithtrust-backend.onrender.com/api/auth/set-role',
         { userId, role },
         {
           headers: { Authorization: `Bearer ${token}` },

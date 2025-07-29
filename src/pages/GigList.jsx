@@ -38,7 +38,7 @@ const GigList = () => {
     const fetchGigs = async () => {
       try {
         console.log('Fetching gigs');
-        const res = await axios.get('http://localhost:5000/api/gigs');
+        const res = await axios.get('https://workwithtrust-backend.onrender.com/api/gigs');
         console.log('Gigs received:', res.data);
         if (isMounted) {
           setGigs(res.data);
@@ -68,7 +68,7 @@ const GigList = () => {
     const fetchCategories = async () => {
       try {
         console.log('Fetching categories');
-        const res = await axios.get('http://localhost:5000/api/gigs/categories');
+        const res = await axios.get('https://workwithtrust-backend.onrender.com/api/gigs/categories');
         console.log('Categories received:', res.data);
         if (isMounted) {
           setCategories(res.data.length ? res.data : fallbackCategories);

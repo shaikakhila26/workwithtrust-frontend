@@ -14,7 +14,7 @@ const Profile = () => {
     const fetchProfile = async () => {
       try {
         const token = localStorage.getItem('token');
-        const res = await axios.get('http://localhost:5000/api/users/profile', {
+        const res = await axios.get('https://workwithtrust-backend.onrender.com/api/users/profile', {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -57,7 +57,7 @@ const Profile = () => {
   try {
     const token = localStorage.getItem("token");
     const response = await axios.put(
-      `http://localhost:5000/api/users/${user._id}`,
+      `https://workwithtrust-backend.onrender.com/api/users/${user._id}`,
       editedUser,
       {
         headers: {
@@ -66,7 +66,7 @@ const Profile = () => {
       }
     );
     // Refetch the full profile to update state properly
-    const refreshed = await axios.get("http://localhost:5000/api/users/profile", {
+    const refreshed = await axios.get("https://workwithtrust-backend.onrender.com/api/users/profile", {
       headers: {
         Authorization: `Bearer ${token}`,
       },

@@ -25,7 +25,7 @@ const handleSubmit = async (e) => {
 
   try {
     console.log('Logging in with:', formData);
-    const res = await axios.post('http://localhost:5000/api/auth/login', formData);
+    const res = await axios.post('https://workwithtrust-backend.onrender.com/api/auth/login', formData);
 
     // Optional: log the whole response to debug
     console.log("Login response:", res.data);

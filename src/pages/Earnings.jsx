@@ -11,7 +11,7 @@ const Earnings = () => {
       try {
         const token = localStorage.getItem('token');
 
-        const res = await axios.get('http://localhost:5000/api/earnings/total', {
+        const res = await axios.get('https://workwithtrust-backend.onrender.com/api/earnings/total', {
           headers: { Authorization: `Bearer ${token}` }
         });
 

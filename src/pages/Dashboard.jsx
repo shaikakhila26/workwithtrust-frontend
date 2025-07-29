@@ -40,7 +40,7 @@ const Dashboard = () => {
     const fetchDashboardData = async () => {
   try {
     console.log('Fetching gigs for user:', user._id);
-    const gigsRes = await axios.get(`http://localhost:5000/api/gigs/user/${user._id}`, {
+    const gigsRes = await axios.get(`https://workwithtrust-backend.onrender.com/api/gigs/user/${user._id}`, {
       headers: { Authorization: `Bearer ${token}` },
     });
     console.log('Dashboard gigs:', gigsRes.data);
@@ -50,7 +50,7 @@ const Dashboard = () => {
     // 🔹 Fetch active orders
     let orders = [];
     try {
-      const ordersRes = await axios.get('http://localhost:5000/api/orders/my-orders', {
+      const ordersRes = await axios.get('https://workwithtrust-backend.onrender.com/api/orders/my-orders', {
         headers: { Authorization: `Bearer ${token}` },
       });
       orders = ordersRes.data;
@@ -68,7 +68,7 @@ const Dashboard = () => {
 
     // 🔹 Fetch earnings
     try {
-      const earningsRes = await axios.get('http://localhost:5000/api/orders/earnings/total', {
+      const earningsRes = await axios.get('https://workwithtrust-backend.onrender.com/api/orders/earnings/total', {
         headers: { Authorization: `Bearer ${token}` },
       });
       setEarnings(earningsRes.data.total || 0);
@@ -102,7 +102,7 @@ const Dashboard = () => {
     if (window.confirm('Are you sure you want to delete this gig?')) {
       try {
         console.log('Deleting gig with ID:', gigId);
-        await axios.delete(`http://localhost:5000/api/gigs/${gigId}`, {
+        await axios.delete(`https://workwithtrust-backend.onrender.com/api/gigs/${gigId}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setGigs((prevGigs) => prevGigs.filter((gig) => gig._id !== gigId));
