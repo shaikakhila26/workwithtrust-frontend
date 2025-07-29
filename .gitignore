@@ -1,0 +1,61 @@
+
+
+
+dist-ssr
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+.DS_Store
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+
+
+# Dependencies
+node_modules/
+
+# Build output
+build/
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+.env.local
+.env.development
+.env.production
+.env*.local
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Miscellaneous
+*.pem
+*.crt
+*.key
+
+# Test coverage
+coverage/
+
+# TypeScript
+*.tsbuildinfo
+
+src/config.js
