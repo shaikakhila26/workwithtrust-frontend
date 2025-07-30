@@ -58,27 +58,27 @@ const handleSubmit = async (e) => {
         backgroundImage: 'url(register-bg.jpg)', // ✅ You can replace this with any other soft image
       }}
     >
-      <div className="w-full max-w-4xl flex flex-col sm:flex-row rounded-2xl overflow-hidden shadow-2xl backdrop-blur-md bg-white/80 absolute right-20 bottom-20">
+      <div className="w-full max-w-4xl flex flex-col sm:flex-row rounded-2xl overflow-hidden shadow-2xl backdrop-blur-md bg-white/80 ">
 
         {/* Left Panel */}
-        <div className="w-full sm:w-1/2 bg-emerald-400 text-white flex flex-col justify-center items-center p-6 sm:p-8 lg:p-10 space-y-4 backdrop-blur-md ">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold mb-4">Welcome Back!</h2>
-          <p className="text-center text-sm sm:text-base lg:text-lg mb-6">
+        <div className="w-full sm:w-1/2 bg-emerald-400 text-white flex flex-col justify-center items-center p-4 sm:p-6 lg:p-10 space-y-4 backdrop-blur-md ">
+          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold mb-2 sm:mb-4">Welcome Back!</h2>
+          <p className="text-center text-xs sm:text-sm lg:text-lg mb-2 sm:mb-6">
             Already have an account? Please sign in.
           </p>
           <Link
             to="/login"
-            className="border-2 border-white px-4 sm:px-6 py-2 sm:py-2.5 rounded-full hover:bg-white hover:text-emerald-600 transition-all duration-300 text-sm sm:text-base"
+            className="border-2 border-white px-3 sm:px-4 py-1 sm:py-2.5 rounded-full hover:bg-white hover:text-emerald-600 transition-all duration-300 text-xs sm:text-sm"
           >
             Sign In
           </Link>
         </div>
 
         {/* Right Panel */}
-        <div className="w-full sm:w-1/2 p-6 sm:p-8 lg:p-10 flex flex-col justify-center space-y-6">
-          <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold text-emerald-700 mb-6 text-center">Create Account</h2>
+        <div className="w-full sm:w-1/2 p-4 sm:p-6 lg:p-10 flex flex-col justify-center space-y-4">
+          <h2 className="text-lg sm:text-xl lg:text-2xl font-bold text-emerald-700 mb-4 text-center">Create Account</h2>
 
-          <form onSubmit={handleSubmit} className="space-y-4">
+          <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
             <input
               type="text"
               name="name"
@@ -86,7 +86,7 @@ const handleSubmit = async (e) => {
               onChange={handleChange}
               placeholder="Name"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all text-sm sm:text-base"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all text-sm sm:text-base"
             />
 
             <input
@@ -96,7 +96,7 @@ const handleSubmit = async (e) => {
               onChange={handleChange}
               placeholder="Email"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all text-sm sm:text-base"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all text-sm sm:text-base"
             />
 
             <input
@@ -106,7 +106,7 @@ const handleSubmit = async (e) => {
               onChange={handleChange}
               placeholder="Password"
               required
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all text-sm sm:text-base"
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-400 transition-all text-sm sm:text-base"
             />
 
             <button
