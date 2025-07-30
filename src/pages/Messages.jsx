@@ -121,7 +121,7 @@ const Messages = () => {
 
     try {
       console.log('📤 Sending message:', msg);
-      const res = await axios.post(`${backendBase}/messages`, msg, {
+      const res = await axios.post(`${backendBase}/api/messages`, msg, {
         headers: { Authorization: `Bearer ${token}` },
       });
       console.log('✅ Message sent:', res.data);
