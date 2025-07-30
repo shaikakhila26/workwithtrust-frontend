@@ -70,7 +70,7 @@ const Messages = () => {
     const fetchChatUsers = async () => {
       try {
         console.log('📤 Fetching chat users for:', user._id);
-        const res = await axios.get(`${backendBase}/messages/chat-users/${user._id}`, {
+        const res = await axios.get(`${backendBase}/api/messages/chat-users/${user._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log('✅ Chat users fetched:', res.data);

@@ -63,7 +63,7 @@ useEffect(() => {
     const fetchContacts = async () => {
       try {
         const url = `${backendBase}/api/users`;
-        console.log("Fetching contacts from :",url);
+        console.log("fetching contacts from :",url);
         const res = await axios.get(url, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
