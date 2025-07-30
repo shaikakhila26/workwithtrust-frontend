@@ -132,6 +132,14 @@ const handleToggleSidebar = () => {
 };
 
 
+useEffect(() => {
+  if (isSidebarOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
+}, [isSidebarOpen]);
+
 
   if (error) {
     return (
@@ -148,10 +156,9 @@ const handleToggleSidebar = () => {
     <div className="min-h-screen bg-gray-100 flex flex-col sm:flex-row relative">
       {/* Sidebar - Toggle on mobile, static on sm+ */}
       <FreelancerSidebar
-  className={`fixed top-0 left-0 h-screen bg-white shadow-lg transform transition-transform duration-300 ${
+  className={`fixed top-0 left-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform duration-300 ${
     isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-  } sm:translate-x-0 sm:static sm:w-64 z-40 overflow-y-auto`}
-  style={{ transform: isSidebarOpen ? 'translateX(0)' : 'translateX(-100%)' }} // Force transform
+  } sm:static sm:translate-x-0 sm:h-screen`}
 />
       {/* Overlay for mobile */}
       {isSidebarOpen && (
@@ -160,13 +167,7 @@ const handleToggleSidebar = () => {
           onClick={handleCloseSidebar}
         ></div>
       )}
-      {/* Mobile Menu Toggle */}
-      <button
-        className="sm:hidden p-3 text-gray-800 fixed top-4 left-4 z-50 bg-white rounded-full shadow-md"
-        onClick={handleToggleSidebar}
-      >
-        ☰
-      </button>
+      
 
       <main className={`flex-1 p-4 sm:p-6 lg:p-8 pb-24 ${isSidebarOpen ? 'ml-64' : 'ml-0'} sm:ml-64 sm:pb-8`}>
         <div className="flex flex-col gap-3 sm:flex-row justify-between items-center mb-6 sm:mb-8 text-center sm:text-left">
