@@ -15,7 +15,7 @@ const ChatSidebar = ({ setSelectedUser }) => {
 
     const fetchUsers = async () => {
       try {
-        const res = await axios.get(`${backendBase}/messages/chat-users/${userId}`, {
+        const res = await axios.get(`${backendBase}/api/messages/chat-users/${userId}`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem('token')}`,
           },

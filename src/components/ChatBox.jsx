@@ -12,7 +12,7 @@ const ChatBox = ({ selectedUser }) => {
     if (!selectedUser || !userId) return;
 
     try {
-      const res = await axios.get(`${backendBase}/messages/${selectedUser._id}`, {
+      const res = await axios.get(`${backendBase}/api/messages/${selectedUser._id}`, {
         headers: {
           Authorization: `Bearer ${localStorage.getItem('token')}`,
         },
@@ -28,7 +28,7 @@ const ChatBox = ({ selectedUser }) => {
 
     try {
       const res = await axios.post(
-        `${backendBase}/messages`,
+        `${backendBase}/api/messages`,
         {
           senderId: userId,
           receiverId: selectedUser._id,
