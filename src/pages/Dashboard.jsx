@@ -142,11 +142,13 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col sm:flex-row relative">
-      {/* Sidebar - Hidden on mobile, visible on sm+ */}
-      <FreelancerSidebar className={`fixed top-0 left-0 h-full bg-white shadow-lg transform transition-transform duration-300 ${
-          isSidebarOpen ? 'translate-x-0' : '-translate-x-full' } sm:translate-x-0 sm:static sm:w-64 z-40`} />
-
-          {/* Overlay for mobile */}
+      {/* Sidebar - Toggle on mobile, static on sm+ */}
+      <FreelancerSidebar
+        className={`fixed top-0 left-0 h-full bg-white shadow-lg transform transition-transform duration-300 ${
+          isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        } sm:translate-x-0 sm:static sm:w-64 z-40`}
+      />
+      {/* Overlay for mobile */}
       {isSidebarOpen && (
         <div
           className="fixed inset-0 bg-black bg-opacity-50 z-30 sm:hidden"
@@ -157,9 +159,7 @@ const Dashboard = () => {
       <button
         className="sm:hidden p-3 text-gray-800 fixed top-4 left-4 z-50 bg-white rounded-full shadow-md"
         onClick={handleToggleSidebar}
-      ></button>
-      {/* Mobile Menu Toggle (Optional) - Add if Sidebar needs mobile access */}
-      <button className="sm:hidden p-4 text-gray-800 fixed top-4 left-4 z-50 bg-white rounded-full shadow-md">
+      >
         ☰
       </button>
 
