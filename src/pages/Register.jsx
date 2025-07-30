@@ -23,7 +23,7 @@ const Register = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   let attempt = 0;
-  const maxAttempts = 2;
+  const maxAttempts = 10;
 
   while (attempt < maxAttempts) {
     try {
