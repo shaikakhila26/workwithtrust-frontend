@@ -85,7 +85,7 @@ const ClientDashboard = () => {
         </div>
 
         <div className="bg-white p-6 rounded shadow">
-          <h2 className="text-lg font-semibold text-gray-800 mb-4">Your Orders</h2>
+          <h2 className="text-lg font-semibold text-gray-800 mb-4">Purchased Gigs</h2>
           <div className="overflow-x-auto">
             <table className="min-w-full text-sm text-left text-gray-700">
               <thead>
