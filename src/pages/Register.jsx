@@ -20,27 +20,36 @@ const Register = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  let attempt = 0;
+  const maxAttempts = 2;
 
+  while (attempt < maxAttempts) {
     try {
-      const res = await axios.post('https://workwithtrust-backend.onrender.com/api/auth/register', formData);
+      const res = await axios.post('https://workwithtrust-backend.onrender.com/api/auth/register', formData, { timeout: 10000 });
+      const { token, user } = res.data; // Assuming backend returns { token, user }
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem('token', token);
       toast.success('🎉 Registered successfully! Please login.');
       navigate('/login');
+      return;
     } catch (err) {
-      console.error('Registration error:', {
-      message: err.message,
-      status: err.response?.status,
-      data: err.response?.data,
-      config: err.config,
-    });
+      console.error('Registration attempt', attempt + 1, 'error:', err);
+      if (err.code === 'ECONNABORTED' && attempt < maxAttempts - 1) {
+        attempt++;
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        continue;
+      }
       if (err.response?.status === 400) {
         toast.error('⚠️ User already exists!');
       } else {
-        toast.error('🚫 Registration failed. Try again.');
+        toast.error(`🚫 Registration failed. Error: ${err.message}`);
       }
+      break;
     }
-  };
+  }
+};
 
   return (
     <div

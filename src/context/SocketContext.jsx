@@ -20,6 +20,7 @@ export const SocketProvider = ({ children }) => {
 
     const s = io('https://workwithtrust-backend.onrender.com', {
       auth: { token },
+      withCredentials:true,
       transports: ['websocket', 'polling'],
       reconnection: true,
       reconnectionAttempts: 5,
@@ -41,6 +42,7 @@ export const SocketProvider = ({ children }) => {
 
     const handleConnectError = (error) => {
       console.error('❌ Socket connect_error:', error.message);
+      setSocket(null);
     };
 
     s.on('connect', handleConnect);

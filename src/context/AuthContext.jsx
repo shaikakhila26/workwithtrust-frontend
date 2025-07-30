@@ -10,6 +10,14 @@ export const AuthProvider = ({ children }) => {
 }
 
   );
+  useEffect(() => {
+    const handleStorageChange = () => {
+      const storedUser = localStorage.getItem("user");
+      setCurrentUser(storedUser ? JSON.parse(storedUser) : null);
+    };
+    window.addEventListener('storage', handleStorageChange);
+    return () => window.removeEventListener('storage', handleStorageChange);
+  }, []);
 
   const login = (user) => {
   localStorage.setItem("user", JSON.stringify(user));
