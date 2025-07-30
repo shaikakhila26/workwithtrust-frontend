@@ -127,6 +127,9 @@ const handleToggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
+  const handleCloseSidebar = () => {
+  setIsSidebarOpen(false);
+};
 
 
 
@@ -165,8 +168,9 @@ const handleToggleSidebar = () => {
         ☰
       </button>
 
-      <main className={`flex-1 p-4 sm:p-6 lg:p-8 ${isSidebarOpen ? 'ml-64' : 'ml-0'} sm:ml-64`}>
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-6 sm:mb-8">
+      <main className={`flex-1 p-4 sm:p-6 lg:p-8 pb-24 ${isSidebarOpen ? 'ml-64' : 'ml-0'} sm:ml-64 sm:pb-8`}>
+        <div className="flex flex-col gap-3 sm:flex-row justify-between items-center mb-6 sm:mb-8 text-center sm:text-left">
+
           <h1 className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-800 mb-4 sm:mb-0">Welcome back, {user?.name || 'User'} 👋</h1>
           <Link
             to="/create-gig"
@@ -193,15 +197,15 @@ const handleToggleSidebar = () => {
 
         <div className="bg-white p-4 sm:p-6 lg:p-8 rounded-lg shadow-md">
           <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold text-gray-800 mb-4 sm:mb-6">Your Gigs</h2>
-          <div className="overflow-x-auto">
-            <table className="min-w-full text-xs sm:text-sm text-left text-gray-700">
+          <div className="overflow-x-auto w-full">
+            <table className="min-w-[600px] text-xs sm:text-sm text-left text-gray-700">
               <thead>
                 <tr className="border-b bg-gray-50">
-                  <th className="py-2 px-2 sm:px-4">Title</th>
-                  <th className="py-2 px-2 sm:px-4">Status</th>
-                  <th className="py-2 px-2 sm:px-4">Views</th>
-                  <th className="py-2 px-2 sm:px-4">Earnings</th>
-                  <th className="py-2 px-2 sm:px-4">Actions</th>
+                  <th className="py-1 px-2 sm:px-4 sm:py-2 text-xs sm:text-sm">Title</th>
+                  <th className="py-1 px-2 sm:px-4 sm:py-2 text-xs sm:text-sm">Status</th>
+                  <th className="py-1 px-2 sm:px-4 sm:py-2 text-xs sm:text-sm">Views</th>
+                  <th className="py-1 px-2 sm:px-4 sm:py-2 text-xs sm:text-sm">Earnings</th>
+                  <th className="py-1 px-2 sm:px-4 sm:py-2 text-xs sm:text-sm">Actions</th>
                 </tr>
               </thead>
               <tbody>
