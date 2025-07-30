@@ -133,12 +133,11 @@ const handleToggleSidebar = () => {
 
 
 useEffect(() => {
-  if (isSidebarOpen) {
-    document.body.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-  }
-}, [isSidebarOpen]);
+    document.body.style.overflow = isSidebarOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isSidebarOpen]);
 
 
   if (error) {
@@ -162,11 +161,27 @@ useEffect(() => {
 />
       {/* Overlay for mobile */}
       {isSidebarOpen && (
-        <div
+        <div 
           className="fixed inset-0 bg-black bg-opacity-50 z-30 sm:hidden"
-          onClick={handleCloseSidebar}
-        ></div>
+          onClick={() => setIsSidebarOpen(false)}
+        />
       )}
+      {/* Sidebar container */}
+      <div
+        className={`absolute sm:relative z-50 transition-transform duration-300 sm:translate-x-0 
+          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
+          sm:w-64 w-64 bg-white`}
+      >
+        <FreelancerSidebar />
+      </div>
+
+      {/* Hamburger Button - only on mobile */}
+      <button
+        className="fixed top-4 left-4 z-50 sm:hidden bg-white p-2 rounded shadow"
+        onClick={() => setIsSidebarOpen(true)}
+      >
+        ☰
+      </button>
       
 
       <main className={`flex-1 p-4 sm:p-6 lg:p-8 pb-24 ${isSidebarOpen ? 'ml-64' : 'ml-0'} sm:ml-64 sm:pb-8`}>
