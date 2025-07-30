@@ -28,6 +28,12 @@ const Register = () => {
       toast.success('🎉 Registered successfully! Please login.');
       navigate('/login');
     } catch (err) {
+      console.error('Registration error:', {
+      message: err.message,
+      status: err.response?.status,
+      data: err.response?.data,
+      config: err.config,
+    });
       if (err.response?.status === 400) {
         toast.error('⚠️ User already exists!');
       } else {
