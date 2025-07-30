@@ -145,9 +145,9 @@ const handleToggleSidebar = () => {
     <div className="min-h-screen bg-gray-100 flex flex-col sm:flex-row relative">
       {/* Sidebar - Toggle on mobile, static on sm+ */}
       <FreelancerSidebar
-  className={`fixed top-0 left-0 h-full bg-white shadow-lg transform transition-transform duration-300 ${
+  className={`fixed top-0 left-0 h-screen bg-white shadow-lg transform transition-transform duration-300 ${
     isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-  } sm:translate-x-0 sm:static sm:w-64 z-40`}
+  } sm:translate-x-0 sm:static sm:w-64 z-40 overflow-y-auto`}
   style={{ transform: isSidebarOpen ? 'translateX(0)' : 'translateX(-100%)' }} // Force transform
 />
       {/* Overlay for mobile */}
