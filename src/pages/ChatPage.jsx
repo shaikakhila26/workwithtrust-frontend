@@ -62,7 +62,7 @@ useEffect(() => {
 
     const fetchContacts = async () => {
       try {
-        const res = await axios.get(`${backendBase}/api/users`, {
+        const res = await axios.get(`${backendBase}/users`, {
           headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}`
           }
@@ -93,7 +93,7 @@ useEffect(() => {
     console.log("👉 Fetching messages with:", receiverId); // ✅ Debug log
     //setSelectedUser(user);
     try {
-    const res = await axios.get(`${backendBase}/api/messages/${receiverId}`, {
+    const res = await axios.get(`${backendBase}/messages/${receiverId}`, {
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`,
       },
@@ -179,7 +179,7 @@ useEffect(() => {
   console.log("📤 Sending message to:", selectedUser._id);
   console.log("📝 Message content:", content);
 try{
-    const res = await axios.post(`${backendBase}/api/messages`, messageData,{
+    const res = await axios.post(`${backendBase}/messages`, messageData,{
        
       headers: {
         Authorization: `Bearer ${localStorage.getItem("token")}`
