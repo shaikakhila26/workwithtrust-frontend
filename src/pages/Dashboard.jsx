@@ -172,7 +172,7 @@ useEffect(() => {
           ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
           sm:w-64 w-64 bg-white`}
       >
-        <FreelancerSidebar />
+        
       </div>
 
       {/* Hamburger Button - only on mobile */}
