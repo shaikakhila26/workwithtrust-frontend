@@ -1,7 +1,7 @@
 // src/pages/GigDetail.jsx
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from './axios.js';
 import { toast } from "react-toastify";
 import { FaStar } from "react-icons/fa"; // For star icons
 
