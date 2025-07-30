@@ -215,48 +215,89 @@ try{
 
 
   return (
-    <div className="flex h-screen">
-      {/* Sidebar */}
-      <div className="w-1/3 bg-gray-100 p-4">
-        <h2 className="font-bold mb-4">Contacts</h2>
-        {contacts.map((user) => (
-          <div
-            key={user._id}
-            onClick={() => handleUserClick(user)}
-            className="cursor-pointer p-2 hover:bg-gray-200"
-          >
-            {user.name}
-          </div>
-        ))}
-        <p className="text-sm text-gray-500">Selected user: {selectedUser?.name||'None'}</p>
-        
-      </div>
-
-      {/* Chat area */}
-      <div className="w-2/3 p-4 flex flex-col">
-        <div className="flex-1 overflow-y-scroll border p-2">
-          {messages.map((msg, idx) => (
-            <div key={idx} className={`mb-2 ${msg.sender === userId || msg.sender?._id === userId? 'text-right' : 'text-left'}`}>
-              <span className="px-3 py-2 bg-blue-200 inline-block rounded">{msg.content}</span>
-            </div>
-          ))}
-          <div ref={messageEndRef}></div>
-        </div>
-        <div className="mt-4 flex">
-          <input
-            type="text"
-            value={content}
-            onChange={(e) => setContent(e.target.value)}
-            disabled={!selectedUser}
-            placeholder={selectedUser ? "Type your message..." : "Select a contact to start"}
-            className="border flex-1 p-2 rounded"
-          />
-          <button onClick={sendMessage} 
-          disabled={!selectedUser}
-          className="ml-2 px-4 py-2 bg-blue-500 text-white rounded">Send</button>
-        </div>
-      </div>
+    <div className="flex h-screen bg-gradient-to-br from-purple-50 to-purple-100">
+  {/* Sidebar */}
+  <div className="w-full md:w-1/3 border-r bg-white shadow-md overflow-y-auto">
+    <div className="p-4 border-b">
+      <h2 className="text-xl font-semibold text-purple-700">Your Contacts</h2>
     </div>
+    {contacts.length === 0 && (
+      <p className="text-sm text-gray-500 p-4">No contacts yet</p>
+    )}
+    {contacts.map((user) => (
+      <div
+        key={user._id}
+        onClick={() => handleUserClick(user)}
+        className={`flex items-center gap-3 p-4 cursor-pointer hover:bg-purple-50 ${
+          selectedUser?._id === user._id ? "bg-purple-100" : ""
+        }`}
+      >
+        <div className="w-10 h-10 bg-purple-300 rounded-full flex items-center justify-center text-white font-bold">
+          {user.name.charAt(0).toUpperCase()}
+        </div>
+        <div>
+          <p className="font-medium text-gray-800">{user.name}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  {/* Chat area */}
+  <div className="w-full md:w-2/3 flex flex-col">
+    {/* Header */}
+    <div className="p-4 border-b bg-white shadow">
+      <h3 className="text-lg font-semibold text-purple-700">
+        {selectedUser ? `Chat with ${selectedUser.name}` : "Select a contact"}
+      </h3>
+    </div>
+
+    {/* Messages */}
+    <div className="flex-1 overflow-y-auto px-4 py-6 bg-gradient-to-b from-white to-purple-50">
+      {messages.map((msg, idx) => {
+        const isOwn = msg.sender === userId || msg.sender?._id === userId;
+        return (
+          <div
+            key={idx}
+            className={`mb-3 flex ${isOwn ? "justify-end" : "justify-start"}`}
+          >
+            <div
+              className={`max-w-xs px-4 py-2 rounded-lg text-sm ${
+                isOwn
+                  ? "bg-purple-600 text-white rounded-br-none"
+                  : "bg-gray-200 text-gray-800 rounded-bl-none"
+              }`}
+            >
+              {msg.content}
+            </div>
+          </div>
+        );
+      })}
+      <div ref={messageEndRef}></div>
+    </div>
+
+    {/* Input */}
+    <div className="p-4 bg-white border-t flex items-center gap-2">
+      <input
+        type="text"
+        value={content}
+        onChange={(e) => setContent(e.target.value)}
+        disabled={!selectedUser}
+        placeholder={
+          selectedUser ? "Type your message..." : "Select a contact to start"
+        }
+        className="flex-1 border border-gray-300 rounded-full px-4 py-2 focus:outline-none focus:ring-2 focus:ring-purple-400 disabled:opacity-50"
+      />
+      <button
+        onClick={sendMessage}
+        disabled={!selectedUser}
+        className="px-5 py-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold rounded-full transition disabled:opacity-50"
+      >
+        Send
+      </button>
+    </div>
+  </div>
+</div>
+
   );
 };
 
