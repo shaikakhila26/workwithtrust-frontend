@@ -90,7 +90,7 @@ const Messages = () => {
     const fetchMessages = async () => {
       try {
         console.log('📤 Fetching messages for user:', selectedUser._id);
-        const res = await axios.get(`${backendBase}/messages/${selectedUser._id}`, {
+        const res = await axios.get(`${backendBase}/api/messages/${selectedUser._id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         console.log('✅ Messages fetched:', res.data);
