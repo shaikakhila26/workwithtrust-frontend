@@ -82,7 +82,7 @@ const ClientDashboard = () => {
         className="md:hidden absolute top-4 left-4 z-20 bg-white p-2 rounded shadow"
         onClick={() => setSidebarOpen(!sidebarOpen)}
       >
-        <FaBars className="text-2xl text-emerald-600" />
+        <FaBars className="text-xl text-emerald-400" />
       </button>
 
       {/* Sidebar overlay for mobile */}
