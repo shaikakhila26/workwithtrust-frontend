@@ -154,16 +154,16 @@ useEffect(() => {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col sm:flex-row relative">
      {/* Sidebar overlay (only when open on mobile) */}
-      {sidebarOpen && (
+      {isSidebarOpen && (
         <div 
           className="fixed inset-0 bg-black bg-opacity-50 z-40 md:hidden"
-          onClick={() => setSidebarOpen(false)}
+          onClick={() => setIsSidebarOpen(false)}
         ></div>
       )}
 
       {/* Sidebar */}
       <div className={`fixed top-0 left-0 h-full w-64 bg-white z-50 transition-transform duration-300
-        ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+        ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
         md:relative md:translate-x-0 md:w-1/4`}
       >
         <FreelancerSidebar />
@@ -172,7 +172,7 @@ useEffect(() => {
       {/* Hamburger button (mobile only) */}
       <button
         className="absolute top-4 left-4 z-50 md:hidden bg-white p-2 shadow rounded"
-        onClick={() => setSidebarOpen(!sidebarOpen)}
+        onClick={() => setIsSidebarOpen(!isSidebarOpen)}
       >
         ☰
       </button>
