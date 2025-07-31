@@ -105,7 +105,7 @@ const ClientDashboard = () => {
 
 
       <main className="flex-1 p-8">
-        <h1 className="text-2xl font-bold mb-6">Welcome, {user?.name || 'Guest'}</h1>
+        <h1 className="text-2xl font-bold mb-6 justify-center">Welcome, {user?.name || 'Guest'}</h1>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
           <StatCard label="Total Spent" value={`₹${totalSpent}`} />
