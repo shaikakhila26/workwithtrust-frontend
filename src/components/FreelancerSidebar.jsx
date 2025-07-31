@@ -15,7 +15,7 @@ const FreelancerSidebar = () => {
   ];
 
   return (
-    <aside className="w-64 h-screen bg-white shadow-md p-6 hidden md:block sticky top-0">
+    <aside className="w-64 h-screen bg-white shadow-md p-6  sticky top-0">
       <div className="text-2xl font-bold text-emerald-600 mb-8">WorkWithTrust</div>
       <nav className="space-y-4">
         {navItems.map(({ label, icon, path }) => (
