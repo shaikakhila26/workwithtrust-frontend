@@ -134,93 +134,97 @@ const Messages = () => {
     }
   };
 
-  return (
-    <div className="flex h-screen bg-gradient-to-br from-emerald-50 to-white p-6">
-      <div className="w-1/3 bg-white rounded-xl shadow-md p-4 overflow-y-auto">
-        <h2 className="text-xl font-semibold mb-4 text-emerald-700">Chats</h2>
-        {chatUsers.length === 0 ? (
-          <div className="text-gray-500 text-sm">No users you've chatted with yet</div>
-        ) : (
-          chatUsers.map((u) => (
-            <div
-              key={u._id}
-              onClick={() => setSelectedUser(u)}
-              className={`cursor-pointer p-3 rounded-md mb-2 ${
-                selectedUser?._id === u._id ? 'bg-emerald-100' : 'hover:bg-gray-100'
-              }`}
-            >
-              <div className="flex items-center justify-between">
-                <div>
-                  <p className="font-semibold">{u.name || u.email}</p>
-                  <p className="text-sm text-gray-600">{u.email}</p>
-                </div>
-                {unreadCounts[u._id] > 0 && (
-                  <span className="bg-red-500 text-white text-xs rounded-full px-2 py-1">
-                    {unreadCounts[u._id]}
-                  </span>
-                )}
+return (
+  <div className="flex flex-col md:flex-row h-screen bg-gradient-to-br from-emerald-50 to-white">
+    {/* Sidebar */}
+    <div className="w-full md:w-1/3 bg-white rounded-none md:rounded-xl shadow-md p-4 overflow-y-auto h-1/2 md:h-full">
+      <h2 className="text-xl font-semibold mb-4 text-emerald-700">Chats</h2>
+      {chatUsers.length === 0 ? (
+        <div className="text-gray-500 text-sm">No users you've chatted with yet</div>
+      ) : (
+        chatUsers.map((u) => (
+          <div
+            key={u._id}
+            onClick={() => setSelectedUser(u)}
+            className={`cursor-pointer p-3 rounded-md mb-2 ${
+              selectedUser?._id === u._id ? 'bg-emerald-100' : 'hover:bg-gray-100'
+            }`}
+          >
+            <div className="flex items-center justify-between">
+              <div>
+                <p className="font-semibold">{u.name || u.email}</p>
+                <p className="text-sm text-gray-600">{u.email}</p>
               </div>
+              {unreadCounts[u._id] > 0 && (
+                <span className="bg-red-500 text-white text-xs rounded-full px-2 py-1">
+                  {unreadCounts[u._id]}
+                </span>
+              )}
             </div>
-          ))
-        )}
-      </div>
-      <div className="w-2/3 bg-white rounded-xl shadow-md p-4 flex flex-col">
-        {selectedUser ? (
-          <>
-            <h2 className="text-lg font-bold mb-4 text-emerald-700">
-              Chat with {selectedUser.name || selectedUser.email}
-            </h2>
-            <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 rounded-lg">
-              {messages.map((msg, idx) => (
+          </div>
+        ))
+      )}
+    </div>
+
+    {/* Chat Box */}
+    <div className={`w-full md:w-2/3 bg-white rounded-none md:rounded-xl shadow-md p-4 flex flex-col h-full ${!selectedUser ? 'hidden md:flex' : 'flex'}`}>
+      {selectedUser ? (
+        <>
+          <h2 className="text-lg font-bold mb-4 text-emerald-700">
+            Chat with {selectedUser.name || selectedUser.email}
+          </h2>
+          <div className="flex-1 overflow-y-auto p-4 space-y-4 bg-gray-50 rounded-lg">
+            {messages.map((msg, idx) => (
+              <div
+                key={idx}
+                className={`flex ${
+                  msg.sender._id.toString() === user._id ? 'justify-end' : 'justify-start'
+                }`}
+              >
                 <div
-                  key={idx}
-                  className={`flex ${
-                    msg.sender._id.toString() === user._id ? 'justify-end' : 'justify-start'
+                  className={`max-w-xs p-3 rounded-lg ${
+                    msg.sender._id.toString() === user._id
+                      ? 'bg-emerald-500 text-white'
+                      : 'bg-gray-200 text-gray-800'
                   }`}
                 >
-                  <div
-                    className={`max-w-xs p-3 rounded-lg ${
-                      msg.sender._id.toString() === user._id
-                        ? 'bg-emerald-500 text-white'
-                        : 'bg-gray-200 text-gray-800'
-                    }`}
-                  >
-                    <p className="text-sm">{msg.content}</p>
-                    <p className="text-xs mt-1 opacity-75">
-                      {new Date(msg.timestamp).toLocaleTimeString()}
-                    </p>
-                  </div>
+                  <p className="text-sm">{msg.content}</p>
+                  <p className="text-xs mt-1 opacity-75">
+                    {new Date(msg.timestamp).toLocaleTimeString()}
+                  </p>
                 </div>
-              ))}
-              <div ref={messagesEndRef} />
-            </div>
-            <div className="p-4 border-t">
-              <div className="flex gap-2">
-                <input
-                  type="text"
-                  placeholder="Type a message..."
-                  value={newMessage}
-                  onChange={(e) => setNewMessage(e.target.value)}
-                  className="flex-1 border border-gray-300 rounded px-4 py-2"
-                />
-                <button
-                  onClick={sendMessage}
-                  disabled={!newMessage.trim()}
-                  className="bg-emerald-500 text-white px-4 py-2 rounded hover:bg-emerald-600 disabled:bg-gray-400"
-                >
-                  Send
-                </button>
               </div>
-            </div>
-          </>
-        ) : (
-          <div className="text-gray-500 text-center flex-1 flex items-center justify-center">
-            Select a user to start chatting 💬
+            ))}
+            <div ref={messagesEndRef} />
           </div>
-        )}
-      </div>
+          <div className="p-4 border-t">
+            <div className="flex gap-2">
+              <input
+                type="text"
+                placeholder="Type a message..."
+                value={newMessage}
+                onChange={(e) => setNewMessage(e.target.value)}
+                className="flex-1 border border-gray-300 rounded px-4 py-2"
+              />
+              <button
+                onClick={sendMessage}
+                disabled={!newMessage.trim()}
+                className="bg-emerald-500 text-white px-4 py-2 rounded hover:bg-emerald-600 disabled:bg-gray-400"
+              >
+                Send
+              </button>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className="text-gray-500 text-center flex-1 flex items-center justify-center">
+          Select a user to start chatting 💬
+        </div>
+      )}
     </div>
-  );
+  </div>
+);
+
 };
 
 export default Messages;
