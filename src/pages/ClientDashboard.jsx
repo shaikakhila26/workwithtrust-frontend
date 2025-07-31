@@ -3,12 +3,14 @@ import { useEffect, useState } from 'react';
 import Sidebar from '../components/Sidebar';
 import axios from 'axios';
 import { toast } from 'react-toastify';
+import { FaBars } from 'react-icons/fa';
 
 const ClientDashboard = () => {
   const [orders, setOrders] = useState([]);
   const [totalSpent, setTotalSpent] = useState(0);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [user, setUser] = useState(() => {
     const storedUser = localStorage.getItem('user');
     return storedUser ? JSON.parse(storedUser) : null;
@@ -73,8 +75,35 @@ const ClientDashboard = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-100 flex">
-      <Sidebar />
+    <div className="min-h-screen bg-gray-100 flex relative">
+  
+  {/* Mobile toggle */}
+      <button
+        className="md:hidden absolute top-4 left-4 z-20 bg-white p-2 rounded shadow"
+        onClick={() => setSidebarOpen(!sidebarOpen)}
+      >
+        <FaBars className="text-2xl text-emerald-600" />
+      </button>
+
+      {/* Sidebar overlay for mobile */}
+      <div
+        className={`fixed inset-0 z-10 bg-black bg-opacity-50 transition-opacity duration-300 ${
+          sidebarOpen ? 'block' : 'hidden'
+        } md:hidden`}
+        onClick={() => setSidebarOpen(false)}
+      ></div>
+
+      {/* Sidebar */}
+      <div
+        className={`fixed top-0 left-0 z-20 h-full w-64 bg-white shadow-md transform transition-transform duration-300 ease-in-out md:relative md:translate-x-0 md:block ${
+          sidebarOpen ? 'translate-x-0' : '-translate-x-full'
+        }`}
+      >
+        <Sidebar />
+      </div>
+
+
+
       <main className="flex-1 p-8">
         <h1 className="text-2xl font-bold mb-6">Welcome, {user?.name || 'Guest'}</h1>
 
