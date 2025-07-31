@@ -166,14 +166,7 @@ useEffect(() => {
           onClick={() => setIsSidebarOpen(false)}
         />
       )}
-      {/* Sidebar container */}
-      <div
-        className={`absolute sm:relative z-50 transition-transform duration-300 sm:translate-x-0 
-          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'} 
-          sm:w-64 w-64 bg-white`}
-      >
-        
-      </div>
+      
 
       {/* Hamburger Button - only on mobile */}
       <button
